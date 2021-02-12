@@ -1,38 +1,64 @@
-.App {
-  text-align: center;
+.card {
+  background-color: #ffffff;
+  border-radius: 0.25rem;
+  padding: 1.25rem;
+  box-shadow: 0 0 0.125rem rgba(0, 0, 0, 0.125), 0 0.0625rem rgba(0, 0, 0, 0.125);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-container {
+  padding: 2.5rem 5vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input {
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid #cccccc;
+  padding: 0.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.d-block {
+  display: block;
+}
+
+.d-flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.flex-row-wrap {
+  flex-flow: row wrap;
 }
 
-.App-link {
-  color: #61dafb;
+.justify-content-between {
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.align-items-start {
+  align-items: flex-start;
+}
+
+.d-flex .card {
+  flex: 0 1 45%;
+  max-width: 45%;
+}
+
+.movies-and-nominations-container {
+  padding: 2rem 0;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.movies-results-container, .nominations-container {
+  margin-bottom: 1.25rem;
+}
+
+li {
+  padding-bottom: 0.75rem;
+}
+
+@media (max-width: 767px) {
+  .d-flex .card {
+    flex: 0 1 100%;
+    max-width: 100%;
   }
 }
