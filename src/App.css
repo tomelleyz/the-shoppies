@@ -56,6 +56,27 @@ li {
   padding-bottom: 0.75rem;
 }
 
+.loading-skeleton {
+  height: 1.5rem;
+  width: 90%;
+  background-color: #d9d9d9;
+  border-radius: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.animation-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+} 
+
 @media (max-width: 767px) {
   .d-flex .card {
     flex: 0 1 100%;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import SearchBox from './components/SearchBox';
 import MovieList from './components/MovieList';
+import LoadingSkeleton from './components/LoadingSkeleton';
 
 function App() {
   const [searchValue, setSearchValue] = useState('')
@@ -23,16 +24,37 @@ function App() {
     fetchMovie(searchValue)
   }, [searchValue])
 
-  const nominateMovie = (movie, event) => {
+  useEffect(() => {
+    const savedNominationList = JSON.parse(
+      localStorage.getItem('theShoppiesNominationList')
+    )
+
+    if (savedNominationList) {
+      setNominations(savedNominationList)
+    }
+  }, [])
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem('theShoppiesNominationList', JSON.stringify(items))
+  }
+
+  const nominateMovie = (movie) => {
     const newNominationsList = [...nominations, movie]
 
-    //TODO: Disable button after nomination
-    //      Save nominationsList in localStorage
-    if (newNominationsList.length < 5) {
+    const alreadyNominated = nominations.find(nomination => nomination.imdbID === movie.imdbID)
+
+    //TODO: Disable button after nomination instead of not setting nominations 
+    //      setting 'event.target.disabled = true' doesn't work (why?)
+    //      Show LoadingSkeleton while movieResults are loading
+    if (newNominationsList.length < 5 && !alreadyNominated) {
       setNominations(newNominationsList)
-    } else if (newNominationsList.length === 5) {
+      saveToLocalStorage(newNominationsList)
+    } else if (newNominationsList.length === 5 && !alreadyNominated) {
       setNominations(newNominationsList)
+      saveToLocalStorage(newNominationsList)
       setTimeout(() => alert('Nominations are complete! You can only nominate 5 movies.'), 300)
+    } else if (alreadyNominated) {
+      alert('You\'ve already nominated this movie.')
     } else {
       alert('Nominations are complete! You can only nominate 5 movies.')
     }
@@ -44,6 +66,7 @@ function App() {
     )
 
     setNominations(newNominationsList)
+    saveToLocalStorage(newNominationsList)
   }
 
   return (
