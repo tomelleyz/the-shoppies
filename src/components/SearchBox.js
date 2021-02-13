@@ -1,5 +1,6 @@
 
 function SearchBox(props) {
+  
   return (
     <div className='card'>
       <label htmlFor='movieTitle' className='d-block'>Movie Title</label>
