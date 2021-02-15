@@ -2,16 +2,27 @@
 function MovieList(props) {
 
   return (
-    <ul>
+    <div>
       {props.movieResults.map((movie, index) => (
-				<li key={movie.imdbID}>
-					{movie.Title} ({movie.Year})
-          <button onClick={() => props.handleButtonClick(movie)}>
-            {props.action}
-          </button>
-				</li>
+        <div key={movie.imdbID} className='d-flex single-movie-container'>
+          <div className='movie-poster-container'>
+            <img src={movie.Poster} alt='movie poster' className='movie-poster' />
+          </div>
+          <div className='d-flex flex-column-wrap justify-content-between single-movie-metadata'>
+            <div>
+              <p>{movie.Title} ({movie.Year})</p>
+            </div>
+            <div>
+              <div style={{textAlign: 'right'}}>
+                <button onClick={() => props.handleButtonClick(movie)}>
+                  {props.action}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 			))}
-    </ul>
+    </div>
   )
 }
 

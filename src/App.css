@@ -26,7 +26,12 @@ input {
 .flex-row-wrap {
   flex-flow: row wrap;
 }
-
+.flex-column-wrap {
+  flex-flow: column wrap;
+}
+.align-content-between {
+  align-content: space-between;
+}
 .justify-content-between {
   justify-content: space-between;
 }
@@ -36,14 +41,17 @@ input {
 }
 
 .d-flex .card {
-  flex: 0 1 45%;
-  max-width: 45%;
+  flex: 0 1 43%;
+  max-width: 43%;
 }
 
 .movies-and-nominations-container {
   padding: 2rem 0;
 }
-
+.movie-poster {
+  height: auto;
+  max-width: 100%;
+}
 .mt-0 {
   margin-top: 0;
 }
@@ -52,10 +60,18 @@ input {
   margin-bottom: 1.25rem;
 }
 
-li {
+.single-movie-container {
   padding-bottom: 0.75rem;
 }
-
+.movie-poster-container {
+  flex: 0 1 40%;
+}
+.single-movie-metadata {
+  flex: 0 1 70%;
+}
+button {
+  padding: 0.875rem 2rem;
+}
 .loading-skeleton {
   height: 1.5rem;
   width: 90%;
