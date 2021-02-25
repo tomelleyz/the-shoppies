@@ -8,6 +8,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('')
   const [movieResults, setMovieResults] = useState([])
   const [nominations, setNominations] = useState([])
+  const [areMoviesLoaded, setAreMoviesLoaded] = useState(false)
 
   const fetchMovie = async (searchValue) => {
     const url = `http://www.omdbapi.com/?s=${searchValue}&type=movie&apikey=1d7ef04f`
@@ -16,6 +17,7 @@ function App() {
     const jsonResponse = await response.json();
 
     if (jsonResponse.Search) {
+      setAreMoviesLoaded(true)
       setMovieResults(jsonResponse.Search)
     } 
   }
@@ -45,7 +47,6 @@ function App() {
 
     //TODO: Disable button after nomination instead of not setting nominations 
     //      setting 'event.target.disabled = true' doesn't work (why?)
-    //      Show LoadingSkeleton while movieResults are loading
     if (newNominationsList.length < 5 && !alreadyNominated) {
       setNominations(newNominationsList)
       saveToLocalStorage(newNominationsList)
@@ -77,11 +78,14 @@ function App() {
       <div className='d-flex flex-row-wrap justify-content-between align-items-start movies-and-nominations-container'>
         <div className='card movies-results-container'>
           <h4 className='mt-0'>Results for "{searchValue}"</h4>
-          <MovieList 
-            movieResults={movieResults} 
-            handleButtonClick={nominateMovie}
-            action='Nominate'
-          />
+          {areMoviesLoaded ? 
+            (<MovieList 
+              movieResults={movieResults} 
+              handleButtonClick={nominateMovie}
+              action='Nominate'
+            />)
+            : (<LoadingSkeleton />)
+          }
         </div>
         <div className='card nominations-container'>
           <h4 className='mt-0'>Nominations</h4>

@@ -61,7 +61,7 @@ input {
 }
 
 .single-movie-container {
-  padding-bottom: 0.75rem;
+  padding-bottom: 1rem;
 }
 .movie-poster-container {
   flex: 0 1 40%;
@@ -73,11 +73,38 @@ button {
   padding: 0.875rem 2rem;
 }
 .loading-skeleton {
-  height: 1.5rem;
-  width: 90%;
+  height: 13rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.skeleton-image, .skeleton-title-first-line,
+.skeleton-title-second-line, 
+.skeleton-btn {
   background-color: #d9d9d9;
   border-radius: 0.25rem;
-  margin-bottom: 0.75rem;
+}
+.skeleton-image {
+  height: 13rem;
+  width: 40%;
+}
+.skeleton-metadata {
+  height: 13rem;
+  width: 60%;
+  margin-left: 0.75rem;
+}
+.skeleton-title-first-line {
+  height: 1.2rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+.skeleton-title-second-line {
+  height: 1.2rem;
+  width: 75%;
+}
+.skeleton-btn {
+  height: 2rem;
+  width: 7rem;
+  align-self: flex-end;
 }
 
 .animation-pulse {
