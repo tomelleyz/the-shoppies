@@ -17,8 +17,8 @@ function App() {
     const jsonResponse = await response.json();
 
     if (jsonResponse.Search) {
-      setAreMoviesLoaded(true)
       setMovieResults(jsonResponse.Search)
+      setAreMoviesLoaded(true)
     } 
   }
 
